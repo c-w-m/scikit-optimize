@@ -238,8 +238,8 @@ def plot_gaussian_process(res, **kwargs):
                                     acq_func_kwargs=acq_func_kwargs)
         next_x = x[np.argmin(acq)]
         next_acq = acq[np.argmin(acq)]
-        acq -= acq
-        next_acq -= next_acq
+        acq = (-acq)
+        next_acq = (-next_acq)
         ax_ei.plot(x, acq, "b", label=str(acq_func) + "(x)")
         if not plot_both:
             ax_ei.fill_between(x.ravel(), 0, acq.ravel(),
